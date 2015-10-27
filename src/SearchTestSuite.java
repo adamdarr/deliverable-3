@@ -3,7 +3,7 @@ import org.junit.runner.RunWith;
 
 @RunWith(Suite.class)
 @Suite.SuiteClasses({
-	TestSearchPizza.class,
+    TestSearchPizza.class,
     TestSearchHamburgers.class,
     TestSearchSushi.class,
     TestSearchChinese.class,

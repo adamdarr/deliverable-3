@@ -12,10 +12,10 @@ import org.junit.runner.RunWith;
  */
 @RunWith(Suite.class)
 @Suite.SuiteClasses({TestValidEmailAndPassword.class,			// Story 1, Scenario 1
-					TestValidEmailAndInvalidPassword.class,		// Story 1, Scenario 2
-					TestInvalidEmailAndPassword.class,			// Story 1, Scenario 3
-					TestNoEmailPassword.class,					// Story 1, Scenario 4
-					TestEmailNoPassword.class})					// Story 1, Scenario 5
+		TestValidEmailAndInvalidPassword.class,		            // Story 1, Scenario 2
+		TestInvalidEmailAndPassword.class,			              // Story 1, Scenario 3
+		TestNoEmailPassword.class,					                  // Story 1, Scenario 4
+		TestEmailNoPassword.class})					                  // Story 1, Scenario 5
 public class LoginTestSuite {
 
 }

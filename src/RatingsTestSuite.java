@@ -12,10 +12,10 @@ import org.junit.runner.RunWith;
  */
 @RunWith(Suite.class)
 @Suite.SuiteClasses({TestRatingsSearchStars.class, 				// Story 4, Scenario 1
-					TestRatingsSearchNumber.class, 				// Story 4, Scenario 2
-					TestRatingsPageStars.class, 				// Story 4, Scenario 3
-					TestRatingsPageNumber.class, 				// Story 4, Scenario 4
-					TestRatingsPageIndividualReviews.class}) 	// Story 4, Scenario 5
+  	TestRatingsSearchNumber.class, 				                // Story 4, Scenario 2
+  	TestRatingsPageStars.class, 				                  // Story 4, Scenario 3
+  	TestRatingsPageNumber.class, 				                  // Story 4, Scenario 4
+  	TestRatingsPageIndividualReviews.class}) 	            // Story 4, Scenario 5
 public class RatingsTestSuite {
 
 }
