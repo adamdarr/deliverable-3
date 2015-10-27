@@ -54,7 +54,8 @@ public class TestCartRemove {
     	try { if (isElementPresent(By.xpath("(//div[@class='orderItems'])"))) break; } catch (Exception e) {}
     	Thread.sleep(1000);
     }
-
+    
+    Thread.sleep(2000);
     driver.findElement(By.cssSelector("button.btn-cart-remove-item")).click();
     driver.findElement(By.cssSelector("button.orderItem-confirm-btn")).click();
     for (int second = 0;; second++) {
