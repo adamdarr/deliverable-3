@@ -1,4 +1,3 @@
-
 import java.util.regex.Pattern;
 import java.util.concurrent.TimeUnit;
 import org.junit.*;
@@ -8,6 +7,13 @@ import org.openqa.selenium.*;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.support.ui.Select;
 
+/*
+ * Story 2, Scenario 3
+ * 
+ * Given an empty shopping cart 
+ * when I add multiple of one item 
+ * then that quantity should appear in the cart
+ */
 public class TestCartAddMultiple {
   private WebDriver driver;
   private String baseUrl;

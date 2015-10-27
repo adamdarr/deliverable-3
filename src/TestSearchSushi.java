@@ -1,4 +1,3 @@
-
 import java.util.regex.Pattern;
 import java.util.concurrent.TimeUnit;
 import org.junit.*;
@@ -8,6 +7,13 @@ import org.openqa.selenium.*;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.support.ui.Select;
 
+/*
+ * Story 3, Scenario 3
+ * 
+ * Given I type in a search for “sushi” 
+ * when I press the search button 
+ * then I’m given a results page with sushi restaurants
+ */
 public class TestSearchSushi {
   private WebDriver driver;
   private String baseUrl;

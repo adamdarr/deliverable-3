@@ -1,4 +1,3 @@
-
 import java.util.regex.Pattern;
 import java.util.concurrent.TimeUnit;
 import org.junit.*;
@@ -8,6 +7,13 @@ import org.openqa.selenium.*;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.support.ui.Select;
 
+/*
+ * Story 2, Scenario 5
+ * 
+ * Given a cart that is not empty 
+ * when the subtotal, delivery fee, and sales tax are added together 
+ * then they should equal the total price
+ */
 public class TestCartTotal {
   private WebDriver driver;
   private String baseUrl;

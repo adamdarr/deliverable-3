@@ -1,4 +1,3 @@
-
 import java.util.regex.Pattern;
 import java.util.concurrent.TimeUnit;
 import org.junit.*;
@@ -8,6 +7,13 @@ import org.openqa.selenium.*;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.support.ui.Select;
 
+/*
+ * Story 2, Scenario 4
+ * 
+ * Given an empty shopping cart 
+ * when I add multiple of one item 
+ * then the cart subtotal should be the same as the total price of the multiple items.
+ */
 public class TestCartSubtotal {
   private WebDriver driver;
   private String baseUrl;

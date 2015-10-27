@@ -1,4 +1,3 @@
-
 import java.util.regex.Pattern;
 import java.util.concurrent.TimeUnit;
 import org.junit.*;
@@ -8,6 +7,13 @@ import org.openqa.selenium.*;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.support.ui.Select;
 
+/*
+ * Story 2, Scenario 2
+ * 
+ * Given a shopping cart with 1 item in it 
+ * when I remove that item 
+ * then it should no longer be in the cart
+ */
 public class TestCartRemove {
   private WebDriver driver;
   private String baseUrl;
