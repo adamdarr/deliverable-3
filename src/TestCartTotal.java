@@ -17,12 +17,22 @@ public class TestCartTotal {
   @Before
   public void setUp() throws Exception {
     driver = new FirefoxDriver();
-    baseUrl = "https://www.grubhub.com/restaurant/rbs-pizza-place-107-smithfield-st-pittsburgh/283688";
+    baseUrl = "https://www.grubhub.com";
     driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
   }
 
   @Test
   public void testCartTotal() throws Exception {
+    driver.get(baseUrl + "/");
+    driver.findElement(By.cssSelector("#ghs-start-order-new-address-input > div.s-input-group.placeAutocomplete-inputWrapper > input[name=\"places-autocomplete\"]")).clear();
+    driver.findElement(By.cssSelector("#ghs-start-order-new-address-input > div.s-input-group.placeAutocomplete-inputWrapper > input[name=\"places-autocomplete\"]")).sendKeys("346 Meyran Ave, Pittsburgh, PA, 15213");
+    driver.findElement(By.id("ghs-startOrder-searchBtn")).click();
+    for (int second = 0;; second++) {
+    	if (second >= 60) fail("timeout");
+    	try { if (isElementPresent(By.cssSelector("div.searchResultsSnippet-wrapper"))) break; } catch (Exception e) {}
+    	Thread.sleep(1000);
+    }
+
     driver.get(baseUrl + "/restaurant/rbs-pizza-place-107-smithfield-st-pittsburgh/283688");
     for (int second = 0;; second++) {
     	if (second >= 60) fail("timeout");
@@ -52,9 +62,17 @@ public class TestCartTotal {
     String deliveryFee = driver.findElement(By.xpath("//div[@id='ghs-globalCart-container']/div/section/div/div/div[3]/div[2]/div[2]/span")).getText();
     String salesTax = driver.findElement(By.xpath("//div[@id='ghs-globalCart-container']/div/section/div/div/div[3]/div[3]/div[2]/span")).getText();
     String total = driver.findElement(By.cssSelector("span.line-item-val")).getText();
+    
     // ERROR: Caught exception [ERROR: Unsupported command [getEval | parseFloat('${subtotal}'.replace('$', '')) + parseFloat('${deliveryFee}'.replace('$', '')) + parseFloat('${salesTax}'.replace('$', '')) === parseFloat('${total}'.replace('$', '')) ? true : false | ]]
-    driver.findElement(By.xpath("(//button[@type='button'])[5]")).click();
-    driver.findElement(By.xpath("(//button[@type='button'])[6]")).click();
+    // manually remove $ then parse doubles in java and assertEquals instead
+    Double subtotalD = Double.parseDouble(subtotal.substring(1));
+    Double deliveryFeeD = Double.parseDouble(deliveryFee.substring(1));
+    Double salesTaxD = Double.parseDouble(salesTax.substring(1));
+    Double totalD = Double.parseDouble(total.substring(1));
+    
+    Double sum = subtotalD + deliveryFeeD + salesTaxD;
+    
+    assertEquals(sum, totalD);
   }
 
   @After

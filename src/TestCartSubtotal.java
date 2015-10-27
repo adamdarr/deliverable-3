@@ -17,12 +17,22 @@ public class TestCartSubtotal {
   @Before
   public void setUp() throws Exception {
     driver = new FirefoxDriver();
-    baseUrl = "https://www.grubhub.com/restaurant/rbs-pizza-place-107-smithfield-st-pittsburgh/283688";
+    baseUrl = "https://www.grubhub.com";
     driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
   }
 
   @Test
   public void testCartSubtotal() throws Exception {
+    driver.get(baseUrl + "/");
+    driver.findElement(By.cssSelector("#ghs-start-order-new-address-input > div.s-input-group.placeAutocomplete-inputWrapper > input[name=\"places-autocomplete\"]")).clear();
+    driver.findElement(By.cssSelector("#ghs-start-order-new-address-input > div.s-input-group.placeAutocomplete-inputWrapper > input[name=\"places-autocomplete\"]")).sendKeys("346 Meyran Ave, Pittsburgh, PA, 15213");
+    driver.findElement(By.id("ghs-startOrder-searchBtn")).click();
+    for (int second = 0;; second++) {
+    	if (second >= 60) fail("timeout");
+    	try { if (isElementPresent(By.cssSelector("div.searchResultsSnippet-wrapper"))) break; } catch (Exception e) {}
+    	Thread.sleep(1000);
+    }
+
     driver.get(baseUrl + "/restaurant/rbs-pizza-place-107-smithfield-st-pittsburgh/283688");
     for (int second = 0;; second++) {
     	if (second >= 60) fail("timeout");
@@ -50,9 +60,10 @@ public class TestCartSubtotal {
 
     String itemsPrice = driver.findElement(By.cssSelector("div.orderItem-price-container.globalCart-plainText > span")).getText();
     String subtotal = driver.findElement(By.cssSelector("span.lineItem-val")).getText();
+    
     // ERROR: Caught exception [ERROR: Unsupported command [getEval | '${itemsPrice}' === '${subtotal}' ? true : false | ]]
-    driver.findElement(By.xpath("(//button[@type='button'])[5]")).click();
-    driver.findElement(By.xpath("(//button[@type='button'])[6]")).click();
+    // just use junit assertEquals instead
+    assertEquals(itemsPrice, subtotal);
   }
 
   @After
